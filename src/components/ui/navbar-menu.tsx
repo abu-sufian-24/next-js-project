@@ -1,7 +1,7 @@
 'use client';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import Image from 'next/image';
 
 const transition = {
@@ -108,12 +108,16 @@ export const ProductItem = ({
     </Link>
   );
 };
+interface HoveredLinkProps extends LinkProps {
+  children: ReactNode;
+  className?: string;
+}
 
-export const HoveredLink = ({ children, ...rest }: any) => {
+export const HoveredLink = ({ children, ...rest }: HoveredLinkProps) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
+      className="text-neutral-700 dark:text-neutral-200 hover:text-black"
     >
       {children}
     </Link>
